@@ -1,0 +1,35 @@
+<apex:page controller="oauthv2Controller">
+
+    
+    <apex:form >
+        <apex:actionFunction name="getInfo" action="{!info}" />
+        <apex:commandButton value="Get info" action="{!info}"/> <br/> 
+        
+    </apex:form>
+    <script> 
+    	
+    	if(window.location.href.indexOf("code=") > -1) {
+            //alert(window.location);
+            getInfo();
+        }
+    	
+    	
+    </script>
+     <!-- <p>Auth code = {!authcode}</p>
+    <p>Access token = {!accesstoken}</p> -->
+    <table style="width:50%">
+    <tr><th>*** User information *** </th></tr>
+    <tr><td> Name: </td> <td>{!uname}</td></tr>
+    <tr><td> Email: </td> <td>{!uemail}</td>   </tr>
+    <tr><td> PromoCode: </td> <td>{!upromocode}</td></tr>
+    </table>
+    <apex:form >
+        <table>
+            <tr><td>Press to revoke access</td> <td><apex:commandButton value="Revoke" action="{!revoke}"/></td></tr>
+            <tr><td>Press to logout of Uber (does not revoke access)</td> <td><apex:commandButton value="Logout" onclick="window.open('https://riders.uber.com/logout')" /> </td></tr>
+        </table>
+         <br/>
+        <br/>
+    </apex:form>
+    
+</apex:page>
